@@ -1,27 +1,27 @@
 from enum import Enum
 
-import discord
+import pycord
 
-bot = discord.Bot(debug_guilds=[...])
+bot = pycord.Bot(debug_guilds=[...])
 connections = {}
 
 
 class Sinks(Enum):
-    mp3 = discord.sinks.MP3Sink()
-    wav = discord.sinks.WaveSink()
-    pcm = discord.sinks.PCMSink()
-    ogg = discord.sinks.OGGSink()
-    mka = discord.sinks.MKASink()
-    mkv = discord.sinks.MKVSink()
-    mp4 = discord.sinks.MP4Sink()
-    m4a = discord.sinks.M4ASink()
+    mp3 = pycord.sinks.MP3Sink()
+    wav = pycord.sinks.WaveSink()
+    pcm = pycord.sinks.PCMSink()
+    ogg = pycord.sinks.OGGSink()
+    mka = pycord.sinks.MKASink()
+    mkv = pycord.sinks.MKVSink()
+    mp4 = pycord.sinks.MP4Sink()
+    m4a = pycord.sinks.M4ASink()
 
 
-async def finished_callback(sink, channel: discord.TextChannel, *args):
+async def finished_callback(sink, channel: pycord.TextChannel, *args):
     recorded_users = [f"<@{user_id}>" for user_id, audio in sink.audio_data.items()]
     await sink.vc.disconnect()
     files = [
-        discord.File(audio.file, f"{user_id}.{sink.encoding}")
+        pycord.File(audio.file, f"{user_id}.{sink.encoding}")
         for user_id, audio in sink.audio_data.items()
     ]
     await channel.send(
@@ -30,7 +30,7 @@ async def finished_callback(sink, channel: discord.TextChannel, *args):
 
 
 @bot.command()
-async def start(ctx: discord.ApplicationContext, sink: Sinks):
+async def start(ctx: pycord.ApplicationContext, sink: Sinks):
     """Record your voice!"""
     voice = ctx.author.voice
 
@@ -50,7 +50,7 @@ async def start(ctx: discord.ApplicationContext, sink: Sinks):
 
 
 @bot.command()
-async def stop(ctx: discord.ApplicationContext):
+async def stop(ctx: pycord.ApplicationContext):
     """Stop recording."""
     if ctx.guild.id in connections:
         vc = connections[ctx.guild.id]

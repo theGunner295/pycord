@@ -27,8 +27,8 @@ from __future__ import annotations
 import inspect
 from typing import TYPE_CHECKING, Any, Callable
 
-import discord.commands.options
-from discord import (
+import pycord.commands.options
+from pycord import (
     ApplicationCommand,
     Attachment,
     Option,
@@ -566,4 +566,4 @@ class BridgeOption(Option, Converter):
             raise BadArgument() from exc
 
 
-discord.commands.options.Option = BridgeOption
+pycord.commands.options.Option = BridgeOption

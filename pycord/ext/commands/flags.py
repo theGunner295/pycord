@@ -31,7 +31,7 @@ import sys
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING, Any, Iterator, Literal, Pattern, TypeVar, Union
 
-from discord.utils import MISSING, MissingField, maybe_coroutine, resolve_annotation
+from pycord.utils import MISSING, MissingField, maybe_coroutine, resolve_annotation
 
 from .converter import run_converters
 from .errors import (

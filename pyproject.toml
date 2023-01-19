@@ -42,16 +42,16 @@ Funding = "https://patreon.com/pycord"
 
 [tool.setuptools]
 packages = [
-    "discord",
-    "discord.types",
-    "discord.sinks",
-    "discord.ui",
-    "discord.webhook",
-    "discord.commands",
-    "discord.ext.commands",
-    "discord.ext.tasks",
-    "discord.ext.pages",
-    "discord.ext.bridge",
+    "pycord",
+    "pycord.types",
+    "pycord.sinks",
+    "pycord.ui",
+    "pycord.webhook",
+    "pycord.commands",
+    "pycord.ext.commands",
+    "pycord.ext.tasks",
+    "pycord.ext.pages",
+    "pycord.ext.bridge",
 ]
 
 [tool.setuptools.dynamic]

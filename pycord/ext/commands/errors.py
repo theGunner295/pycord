@@ -27,14 +27,14 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Any, Callable
 
-from discord.errors import ClientException, DiscordException
+from pycord.errors import ClientException, DiscordException
 
 if TYPE_CHECKING:
     from inspect import Parameter
 
-    from discord.abc import GuildChannel
-    from discord.threads import Thread
-    from discord.types.snowflake import Snowflake, SnowflakeList
+    from pycord.abc import GuildChannel
+    from pycord.threads import Thread
+    from pycord.types.snowflake import Snowflake, SnowflakeList
 
     from .context import Context
     from .converter import Converter

@@ -2,7 +2,7 @@
 
 import random
 
-import discord
+import pycord
 from discord.ext import commands
 
 
@@ -16,7 +16,7 @@ class MyContext(commands.Context):  # Custom context
         try:
             # This will react to the command author's message.
             await self.message.add_reaction(emoji)
-        except discord.HTTPException:
+        except pycord.HTTPException:
             # Sometimes errors occur during this, for example,
             # maybe you don't have permission to add reactions.
             # We don't mind, so we can just ignore them.
@@ -24,32 +24,32 @@ class MyContext(commands.Context):  # Custom context
 
 
 # You can subclass discord.ApplicationContext to create custom application context if needed
-class MyApplicationContext(discord.ApplicationContext):  # Custom application context
+class MyApplicationContext(pycord.ApplicationContext):  # Custom application context
     async def success(self, message: str):
         try:  # Respond with a green embed with a title of "Success"
-            embed = discord.Embed(
-                title="Success", description=message, colour=discord.Colour.green()
+            embed = pycord.Embed(
+                title="Success", description=message, colour=pycord.Colour.green()
             )
             await self.respond(embeds=[embed])
-        except discord.HTTPException:  # Ignore exceptions
+        except pycord.HTTPException:  # Ignore exceptions
             pass
 
 
 class MyBot(commands.Bot):
-    async def get_context(self, message: discord.Message, *, cls=MyContext):
+    async def get_context(self, message: pycord.Message, *, cls=MyContext):
         # When you override this method, you pass your new Context
         # subclass to the super() method, which tells the bot to
         # use the new MyContext class.
         return await super().get_context(message, cls=cls)
 
     async def get_application_context(
-        self, interaction: discord.Interaction, cls=MyApplicationContext
+        self, interaction: pycord.Interaction, cls=MyApplicationContext
     ):
         # The same method for custom application context.
         return await super().get_application_context(interaction, cls=cls)
 
 
-intents = discord.Intents.default()
+intents = pycord.Intents.default()
 intents.message_content = True
 
 bot = MyBot(

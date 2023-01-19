@@ -1,13 +1,13 @@
 import datetime
 
-import discord
+import pycord
 
-bot = discord.Bot(debug_guilds=[...])
+bot = pycord.Bot(debug_guilds=[...])
 
 
 @bot.slash_command()
 async def timeout(
-    ctx: discord.ApplicationContext, member: discord.Member, minutes: int
+    ctx: pycord.ApplicationContext, member: pycord.Member, minutes: int
 ):
     """Apply a timeout to a member."""
 

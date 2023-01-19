@@ -27,7 +27,7 @@ from typing import TypeVar
 
 import pytest
 
-from discord.utils import (
+from pycord.utils import (
     MISSING,
     _cached_property,
     _parse_ratelimit_header,

@@ -32,7 +32,7 @@ import sys
 from operator import attrgetter
 from typing import TYPE_CHECKING, Any, Literal, TypeVar, Union
 
-import discord.abc
+import pycord.abc
 
 from . import utils
 from .activity import ActivityTypes, create_activity
@@ -207,7 +207,7 @@ M = TypeVar("M", bound="Member")
 
 
 @flatten_user
-class Member(discord.abc.Messageable, _UserTag):
+class Member(pycord.abc.Messageable, _UserTag):
     """Represents a Discord member to a :class:`Guild`.
 
     This implements a lot of the functionality of :class:`User`.
@@ -700,7 +700,7 @@ class Member(discord.abc.Messageable, _UserTag):
         mute: bool = MISSING,
         deafen: bool = MISSING,
         suppress: bool = MISSING,
-        roles: list[discord.abc.Snowflake] = MISSING,
+        roles: list[pycord.abc.Snowflake] = MISSING,
         voice_channel: VocalGuildChannel | None = MISSING,
         reason: str | None = None,
         communication_disabled_until: datetime.datetime | None = MISSING,

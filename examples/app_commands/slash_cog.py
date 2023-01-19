@@ -1,6 +1,6 @@
 # This example demonstrates a standalone cog file with the bot instance in a separate file.
 
-import discord
+import pycord
 from discord.ext import commands
 
 
@@ -11,11 +11,11 @@ class Example(commands.Cog):
     @commands.slash_command(
         guild_ids=[...]
     )  # Create a slash command for the supplied guilds.
-    async def hello(self, ctx: discord.ApplicationContext):
+    async def hello(self, ctx: pycord.ApplicationContext):
         await ctx.respond("Hi, this is a slash command from a cog!")
 
     @commands.slash_command()  # Not passing in guild_ids creates a global slash command.
-    async def hi(self, ctx: discord.ApplicationContext):
+    async def hi(self, ctx: pycord.ApplicationContext):
         await ctx.respond("Hi, this is a global slash command from a cog!")
 
 

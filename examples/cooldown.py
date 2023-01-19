@@ -1,9 +1,9 @@
 # This example requires the `message_content` privileged intent for prefixed commands.
 
-import discord
+import pycord
 from discord.ext import commands
 
-intents = discord.Intents.default()
+intents = pycord.Intents.default()
 intents.message_content = True
 
 bot = commands.Bot(
@@ -16,14 +16,14 @@ bypassing_users = []  # used in the dynamic cooldown below
 @commands.cooldown(
     1, 5, commands.BucketType.user
 )  # The command can only be used once in 5 seconds
-async def slash(ctx: discord.ApplicationContext):
+async def slash(ctx: pycord.ApplicationContext):
     await ctx.respond("You can use this command again in 5 seconds.")
 
 
 # Application command error handler
 @bot.event
 async def on_application_command_error(
-    ctx: discord.ApplicationContext, error: discord.DiscordException
+    ctx: pycord.ApplicationContext, error: pycord.DiscordException
 ):
     if isinstance(error, commands.CommandOnCooldown):
         await ctx.respond("This command is currently on cooldown.")

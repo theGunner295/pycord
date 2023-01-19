@@ -32,7 +32,7 @@ from typing import Tuple
 import aiohttp
 import pkg_resources
 
-import discord
+import pycord
 
 
 def show_version() -> None:
@@ -42,7 +42,7 @@ def show_version() -> None:
         )
     ]
 
-    version_info = discord.version_info
+    version_info = pycord.version_info
     entries.append(
         "- py-cord v{0.major}.{0.minor}.{0.micro}-{0.release_level}".format(
             version_info

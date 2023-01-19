@@ -1,15 +1,15 @@
 import asyncio
 
-import discord
+import pycord
 
-intents = discord.Intents.default()
+intents = pycord.Intents.default()
 intents.message_content = (
     True  # < This may give you `read-only` warning, just ignore it.
 )
 # This intent requires "Message Content Intent" to be enabled at https://discord.com/developers
 
 
-bot = discord.Bot(intents=intents)
+bot = pycord.Bot(intents=intents)
 
 
 @bot.event
@@ -18,7 +18,7 @@ async def on_ready():
 
 
 @bot.event
-async def on_message(message: discord.Message):
+async def on_message(message: pycord.Message):
     if message.content.startswith("!editme"):
         msg = await message.channel.send("10")
         await asyncio.sleep(3.0)
@@ -26,7 +26,7 @@ async def on_message(message: discord.Message):
 
 
 @bot.event
-async def on_message_edit(before: discord.Message, after: discord.Message):
+async def on_message_edit(before: pycord.Message, after: pycord.Message):
     msg = (
         f"**{before.author}** edited their message:\n{before.content} ->"
         f" {after.content}"

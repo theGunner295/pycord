@@ -32,7 +32,7 @@ import sys
 import types
 from typing import Any, Callable, ClassVar, Generator, Mapping, TypeVar, overload
 
-import discord.utils
+import pycord.utils
 
 from . import errors
 from .commands import (
@@ -51,7 +51,7 @@ __all__ = (
 CogT = TypeVar("CogT", bound="Cog")
 FuncT = TypeVar("FuncT", bound=Callable[..., Any])
 
-MISSING: Any = discord.utils.MISSING
+MISSING: Any = pycord.utils.MISSING
 
 
 def _is_submodule(parent: str, child: str) -> bool:
@@ -548,9 +548,9 @@ class Cog(metaclass=CogMeta):
             command._set_cog(self)
 
             if isinstance(command, ApplicationCommand):
-                if isinstance(command, discord.SlashCommandGroup):
+                if isinstance(command, pycord.SlashCommandGroup):
                     for x in command.subcommands:
-                        if isinstance(x, discord.SlashCommandGroup):
+                        if isinstance(x, pycord.SlashCommandGroup):
                             for y in x.subcommands:
                                 y.parent = x
                         x.parent = command
@@ -650,7 +650,7 @@ class CogMixin:
 
         if existing is not None:
             if not override:
-                raise discord.ClientException(f"Cog named {cog_name!r} already loaded")
+                raise pycord.ClientException(f"Cog named {cog_name!r} already loaded")
             self.remove_cog(cog_name)
 
         cog = cog._inject(self)

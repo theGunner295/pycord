@@ -26,8 +26,8 @@ from __future__ import annotations
 
 from abc import ABC
 
-from discord.interactions import Interaction
-from discord.message import Message
+from pycord.interactions import Interaction
+from pycord.message import Message
 
 from ..commands import AutoShardedBot as ExtAutoShardedBot
 from ..commands import Bot as ExtBot

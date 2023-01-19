@@ -941,7 +941,7 @@ class SlashCommand(ApplicationCommand):
                 op.input_type == SlashCommandOptionType.string
                 and (converter := op.converter) is not None
             ):
-                from discord.ext.commands import Converter
+                from pycord.ext.commands import Converter
 
                 if isinstance(converter, Converter):
                     if isinstance(converter, type):
